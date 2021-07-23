@@ -215,7 +215,7 @@ body {
     border: solid 2px rgb(105, 226, 125);
 }
 
-#decline-request:hover {
+#select-decline:hover {
     background:white;
     color: black;
     border: solid 2px rgb(241, 105, 105);
@@ -223,14 +223,30 @@ body {
 
 .declined-btn {
     list-style-type: none;
-    padding: 8px 4px 8px; 
+    padding: 16px 16px 16px; 
     border-radius: 40px;
+    border: solid 2px rgb(117, 219, 117);
     background-color:rgb(241, 142, 142);
     color: black;
     text-align: center;
     text-decoration: none;
     font-family: Roboto;
-    margin-bottom: 16px;
+    margin-top: -24px;
 } 
+.declined-btn:hover {
+    color: black;
+    border: solid 2px rgb(117, 219, 117);
+} 
+
+#decline-request {
+    margin-top: -24px;
+    border: solid 2px rgb(241, 96, 96);
+}
+
+#decline-request:hover {
+    color: black;
+    border: solid 2px rgb(241, 96, 96);
+    background-color:rgb(241, 142, 142);
+}
 
 

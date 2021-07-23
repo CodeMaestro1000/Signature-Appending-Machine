@@ -17,7 +17,7 @@
     <div class="mb-4" id="background">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{% url 'home' %}">
                     <img src="{% static 'images/fut-logo.jpeg' %}" alt="" width="60" height="64" class="d-inline-block align-text-top" >
                 </a>
                 <span class="navbar-text" id="logo-text">COMPUTER ENGINEERING <br> CNC SIGNATURE APPENDING MACHINE</span>
@@ -68,10 +68,10 @@
                                     {% if request.status == "pending" %}
                                     <div class="col-2" style="margin-left: -64px;">
                                         <div class="row">
-                                            <a href="" class="request-action-btn">Accept <i class="fas fa-check" style="margin-left: 32px; color: green"></i></a>
+                                            <a href="{% url 'accept_request' request.pk %}" class="request-action-btn">Accept <i class="fas fa-check" style="margin-left: 32px; color: green"></i></a>
                                         </div>
                                         <div class="row">
-                                            <a href="" id="decline-request" class="request-action-btn">Decline <i class="fas fa-times" style="margin-left: 32px; color: red"></i></a>
+                                            <a href="{% url 'decline_request' request.pk %}" id="select-decline" class="request-action-btn">Decline <i class="fas fa-times" style="margin-left: 32px; color: red"></i></a>
                                         </div>
                                     </div>
                                     {% endif %}
@@ -79,8 +79,11 @@
                         </div>
                         {% endfor %}
                         {% else %}
-                        <div class="form-card center">
-                            <h4 class="text-center">No Requests have been made</h4>
+                        <div class="form-card" style="width: 100%; margin-left: -44px;">
+                            <div class="center">
+                                <i class="fas fa-history fa-10x" style="color: #B064AD; margin-top: 16px;"></i>
+                            </div>
+                            <h4 class="card-title text-center" style="display: block; font-family: Roboto;">No Requests have been made</h4>
                         </div>
                         {% endif %}
                     </div>

@@ -27,5 +27,13 @@ class Request(models.Model):
     def get_absolute_url(self):
         return reverse('request_sent')
 
+    def set_status(self, status):
+        self.status = status
+        self.save()
+
+    def decline_request(self):
+        self.status = "declined"
+        self.save()
+
 
 
