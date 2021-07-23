@@ -1,0 +1,99 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <title>Signature Appending Machine</title>
+  </head>
+  <body>
+    <div class="mb-4" id="background">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="{% static 'images/fut-logo.jpeg' %}" alt="" width="60" height="64" class="d-inline-block align-text-top" >
+                </a>
+                <span class="navbar-text" id="logo-text">COMPUTER ENGINEERING <br> CNC SIGNATURE APPENDING MACHINE</span>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse justify-content-end" id="navbarText">
+                    <ul class="navbar-nav justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link mb-2 mt-2" href="#" id="white">LOGIN</a>
+                        </li>
+                        <li class="nav-item mb-2 mt-2">
+                            <a class="nav-link" href="#"  id="purple">REGISTER</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Card Section-->
+        <div class="container-fluid">
+                <div class="row row-cols-2">
+                    <div class="col-4">
+                        <div class="form-card justify-content-center">
+                            <a class="nav-link mb-2 mt-2 white request-buttons active" href="#" id="">REQUESTS</a>
+                            <a class="nav-link mb-2 mt-2 white request-buttons" href="{% url 'history' %}" id="">HISTORY</a>
+                            <a class="nav-link mb-2 mt-2 white request-buttons" href="#" id="">NOTIFICATIONS</a>
+                        </div>
+                    </div>
+                    <!-- Data Column-->
+                    <div class="col-lg-8">
+                        <!--To be filled with data from requests model -->
+                        {% if object_list %}
+                        {% for request in object_list %}
+                        <div class="white-card" style="background-color: rgb(241, 236, 236);">
+                                <h6 class="text-center request-text">{{request.date}} | {{ request.time }}</h6>
+                                <div class="row row-cols-3">
+                                    <div class="col-2" style="margin-right: 64px;">
+                                        <p class="request-text">{{ request.full_name }}</p>
+                                        <p class="request-text">{{ request.email }}</p>
+                                        <p class="request-text">{{ request.school_id }}</p>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="form-card-lg d-flex justify-content-center" style="margin-top: 0px; margin-left: 32px; background-color: white;">
+                                            <p class="card-text request-text">{{ request.purpose }}</p>
+                                        </div>
+                                    </div>
+                                    {% if request.status == "pending" %}
+                                    <div class="col-2" style="margin-left: -64px;">
+                                        <div class="row">
+                                            <a href="" class="request-action-btn">Accept <i class="fas fa-check" style="margin-left: 32px; color: green"></i></a>
+                                        </div>
+                                        <div class="row">
+                                            <a href="" id="decline-request" class="request-action-btn">Decline <i class="fas fa-times" style="margin-left: 32px; color: red"></i></a>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                        <div class="form-card center">
+                            <h4 class="text-center">No Requests have been made</h4>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+        </div>
+        
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    
+  </body>
+</html>
