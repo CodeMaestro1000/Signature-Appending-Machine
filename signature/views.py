@@ -8,7 +8,8 @@ from .forms import RequestForm
 from django.urls import reverse
 import random
 import requests
-import time
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.core.mail import send_mail
 
 # Create your views here.
@@ -20,7 +21,7 @@ class HomePageView(TemplateView):
 class RequestPageView(CreateView):
     model = Request
     form_class = RequestForm
-    template_name = 'make_request.html'
+    template_name = 'home.html'
     # fields = ['full_name', 'school_id', 'email', 'signatory', 'purpose']
 
 class RequestSuccessView(TemplateView):
@@ -29,6 +30,11 @@ class RequestSuccessView(TemplateView):
 class RequestsView(ListView):
     queryset = Request.objects.filter(status='pending').order_by('-date')
     template_name = 'requests.html'
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
 
 class HistoryView(ListView):
     queryset = Request.objects.order_by('-time').filter(status='accepted') | Request.objects.filter(status='declined')

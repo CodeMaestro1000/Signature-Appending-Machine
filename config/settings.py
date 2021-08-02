@@ -126,3 +126,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = "futsignatureappender@gmail.com"
 EMAIL_HOST_PASSWORD = 'sigapp101'
+
+LOGIN_REDIRECT_URL = 'requests'
+LOGOUT_REDIRECT_URL = 'home'

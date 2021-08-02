@@ -3,8 +3,8 @@ from .views import HomePageView, RequestPageView, RequestSuccessView, RequestsVi
 from .views import accept_request, decline_request
 
 urlpatterns = [
-    path('', HomePageView.as_view(), name='home'),
-    path('make_request/', RequestPageView.as_view(), name='make_request'),
+    # path('', HomePageView.as_view(), name='home'),
+    path('', RequestPageView.as_view(), name='home'),
     path('request_sent/', RequestSuccessView.as_view(), name='request_sent'),
     path('requests/', RequestsView.as_view(), name='requests'),
     path('history/', HistoryView.as_view(), name='history'),

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid d-flex justify-content-center">
+    <div class="form-card" id="login-card" style="margin-top: 64px;">
+        <h4 class="card-title text-center" id="welcome-text">Welcome</h4>
+        <div class="container">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="username" placeholder="Username or Email" id="InputEmail">
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" name="password" id="InputPassword" placeholder="Password">
+                </div>
+                <div class="mb-3">
+                    <a class="centered-text" href="" id="create-account-link">Create an Account?</a>
+                </div>
+                <br>
+                <div class="mb-1">
+                    <div class="row justify-content-center">
+                        <div class="col-auto">
+                            <button type="submit" class="nav-link mb-2 mt-2 purple" href="#" id="">LOG IN</button>
+                        </div>
+                        <div class="col-auto">
+                            <a class="nav-link mb-2 mt-2 white" href="{% url 'home' %}" id="">MAKE A REQUEST</a>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
